@@ -20,13 +20,44 @@
         </tr>
         <tr>
             <td >
-                <input type="submit" value="註冊">
+                <input type="button" value="註冊" onclick="reg()">
                 <input type="reset" value="清除">
-
             </td>
-            <td>
-                
-            </td>
+            <td></td>
         </tr>
     </table>
 </fieldset>
+<script>
+function reg(){
+//宣告js的物件儲存資料
+    let user={acc:$("#acc").val(),
+              pw:$("#pw").val(),
+              pw2:$("#pw2").val(),
+              email:$("#email").val()
+    }
+    // console.log(user); //在console中確認是否有吃到輸入的值
+
+    // 判斷是否有空白
+    if(user.acc!='' && user.pw!='' && user.pw2!='' && user.email!=''){ //判斷4個欄位的值不能是空白
+        if(user.pw == user.pw2){  //確認2次輸入的密碼是否正確
+            $.post("./api/chk_acc.php",{acc:user.acc},(res)=>{//去後端確認帳號是否存在
+                if(parseInt(res)==1){ //將res的結果解析成整數
+                    // console.log(parseInt(res)); 可以在console裡看到回傳值是1
+                    alert("帳號重覆");
+                    
+                }else{
+                    // 註冊新帳號
+                }
+            })
+
+        }else{
+            alert("密碼錯誤，請重新輸入");
+        }
+    }else{
+        alert("不可空白");
+    }
+}
+
+
+    
+</script>
