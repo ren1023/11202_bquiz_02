@@ -43,7 +43,7 @@
 					<span style="width:20%; display:inline-block;">
 						<a href="?do=login">會員登入</a>
 					</span>
-					<!-- 因此處有很多的內容要在此呈現，故使用引的方式 -->
+					<!-- 因此處有很多的內容要在此呈現，故使用引的方式載入頁面 -->
 					<div class="">
 						<?php
 							$do=$_GET['do']??'main';
