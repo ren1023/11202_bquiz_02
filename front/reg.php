@@ -41,15 +41,16 @@ function reg(){
     if(user.acc!='' && user.pw!='' && user.pw2!='' && user.email!=''){ //判斷4個欄位的值不能是空白
         if(user.pw == user.pw2){  //確認2次輸入的密碼是否正確
             $.post("./api/chk_acc.php",{acc:user.acc},(res)=>{//去後端確認帳號是否存在
-                if(parseInt(res)==1){ //將res的結果解析成整數
+                if(parseInt(res) == 1){ //將res的結果解析成整數
                     // console.log(parseInt(res)); 可以在console裡看到回傳值是1
-                    alert("帳號重覆");
-                    
+                    alert("帳號重複");
                 }else{
                     // 註冊新帳號
+                    $.post('./api/reg.php',user,(res)=>{ //與上面的res不一樣喔！
+                        alert('註冊完成，歡迎加入');
+                    })
                 }
             })
-
         }else{
             alert("密碼錯誤，請重新輸入");
         }
