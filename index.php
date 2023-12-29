@@ -41,7 +41,18 @@
 				<div>
 					<marquee style="width:78%; display:inline-block;">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					<span style="width:20%; display:inline-block;">
+					<?php
+						if(!isset($_SESSION['user'])){ //如果沒有 chk_pw.php所產生的session，就執行以下
+					?>
 						<a href="?do=login">會員登入</a>
+					<?php
+						}else{ //如果有session
+					?>
+						歡迎,<?=$_SESSION['user'];?>  <!-- 印出：歡迎xxx -->
+						<button>登出</button>
+					<?php
+						}
+					?>
 					</span>
 					<!-- 因此處有很多的內容要在此呈現，故使用引的方式載入頁面 -->
 					<div class="">
