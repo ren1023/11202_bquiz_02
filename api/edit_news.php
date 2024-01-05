@@ -1,5 +1,5 @@
 <?php include_once "db.php";
-
+// 文章管理處理顯示與刪除功能
 if(isset($_POST['id'])){
     foreach($_POST['id'] as $id){
 
