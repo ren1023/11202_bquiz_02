@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-12-29 08:41:52
+-- 產生時間： 2023-12-29 06:58:02
 -- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -31,14 +31,15 @@ CREATE TABLE `total` (
   `id` int(10) UNSIGNED NOT NULL,
   `total` int(10) UNSIGNED NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `total`
 --
 
 INSERT INTO `total` (`id`, `total`, `date`) VALUES
-(1, 3, '2023-12-29');
+(1, 2, '2023-12-29'),
+(2, 1, '2023-12-30');
 
 -- --------------------------------------------------------
 
@@ -51,18 +52,14 @@ CREATE TABLE `user` (
   `acc` text NOT NULL,
   `pw` text NOT NULL,
   `email` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `user`
 --
 
 INSERT INTO `user` (`id`, `acc`, `pw`, `email`) VALUES
-(1, 'test', '5678', 'test@labor.gov.tw'),
-(2, 'admin', '1234', 'admin@labor.gov.tw'),
-(3, 'kitty', '1234', 'kitty@gmail.com'),
-(4, 'mem01', 'mem01', 'mem01@labor.gov.tw'),
-(5, 'mem02', 'mem02', 'mem02@labor.gov.tw');
+(1, 'test', '5678', 'test@labor.gov.tw');
 
 --
 -- 已傾印資料表的索引
@@ -88,13 +85,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `total`
 --
 ALTER TABLE `total`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

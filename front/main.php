@@ -1,49 +1,43 @@
 <style>
-    /* 4個頁籤 */
-    .tag {
-        width: 100px;
-        padding: 5px 10px;
-        border: 1px solid black;
-        margin-top: -1px;
+    .tag{
+        width:100px;
+        padding:5px 10px;
+        border:1px solid black;
+        margin-left: -1px;
         border-radius: 5px 5px 0 0;
         text-align: center;
+        background-color: #ccc;
     }
-
-    .tags {
+    .tags{
         display: flex;
-        padding-right: 1px;
-        /* position: relative;
-        z-index: 9; */
+        margin-left:1px;
     }
 
-    /* 頁籤的內容 */
-    article section {
-        border: 1px solid black;
-        border-radius:0 10px 10px 10px;
-        min-height: 480px;
-        margin-top: -1px;
+    article section{
+        border:1px solid black;
+        border-radius: 0 5px 5px 5px;
+        min-height:480px;
+        margin-top:-1px;
         display: none;
-        padding: 10px;
-
+        padding:15px;
     }
-
-    .active {
-        border-bottom: 1px solid white;
+    .active{
+        border-bottom:1px solid white;
+        background-color: white;
     }
 </style>
 
-
-<div class="tags"> <!-- 四個頁籤 -->
-    <div id="sec01" class="tag active">健康新知 </div>
-    <div id="sec02" class="tag">菸害防治</div>
-    <div id="sec03" class="tag">癌症防治</div>
-    <div id="sec04" class="tag">慢性病防治</div>
+<div class="tags">
+    <div id="sec01" class='tag active'>健康新知</div>
+    <div id="sec02" class='tag'>菸害防治</div>
+    <div id="sec03" class='tag'>癌症防治</div>
+    <div id="sec04" class='tag'>慢性病防治</div>
 </div>
+
 <article>
-    <section id="section01" style="display: block;">
-        <h2>健康新知</h2>
-        <pre>
-缺乏運動已成為影響全球死亡率的第四大危險因子-國人無規律運動之比率高達72.2%
+    <section id="section01" style="display:block"><h2>健康新知</h2>
+<pre>    
+    缺乏運動已成為影響全球死亡率的第四大危險因子-國人無規律運動之比率高達72.2%
 資料來源： 行政院衛生署國民健康局 
 發佈日期： 2012 / 10 / 07
 世界衛生組織指出運動不足已成全球第四大致死因素，每年有6%的死亡率與運動不足有關，僅次於高血壓（13％）、菸品使用（9％）及高血糖（6％）之後，有超過200萬死亡人數可歸因於靜態生活。世界上約60-85％的成人過著靜態生活，三分之二的兒童運動不足，未來都將影響健康並造成公共衛生問題。運動不足除了增加死亡率，還會使心血管疾病、糖尿病、肥胖的風險加倍，並增加大腸癌、高血壓、骨質疏鬆、脂質失調症（lipid disorders）、憂鬱、焦慮的風險。大約21-25％乳癌及大腸癌、27%糖尿病與30％的缺血性心臟病，係因運動不足所造成。許多國家運動不足的人口比率，也正不斷地增加，依據行政院體育委員會2011年運動城巿調查結果顯示，國人無規律運動習慣之比率高達72.2%。
@@ -61,11 +55,10 @@
 7. 減少看電視、打電玩等靜態生活的時間。
     民眾對運動如有疑問，可參考國民健康局肥胖防治網-「快樂動」(http://obesity.bhp.gov.tw)，亦可撥打免費市話健康體重管理電話諮詢服務，諮詢專線「0800-367-100（0800-瘦落去-要動動）」，也可利用國民健康局局網首頁或肥胖防治網問題諮詢專區的網路電話撥入功能，向客服人員諮詢關於運動、健康飲食及健康體重管理等相關疑問。
 </pre>
-    </section>
-    <section id="section02">
-        <h2>菸害防治</h2>
-        <pre>
-    菸害防治法規
+</section>
+    <section id="section02"><h2>菸害防治</h2>
+<pre>
+菸害防治法規
 第二十三條　　違反第五條或第十條第一項規定者，處新臺幣一萬元以上五萬元以下罰鍰，並得按次連續處罰。
 第二十四條　　製造或輸入違反第六條第一項、第二項或第七條第一項規定之菸品者，處新臺幣一百萬元以上五百萬元以下罰鍰，並令限期回收；屆期未回收者，按次連續處罰，違規之菸品沒入並銷毀之。
 販賣違反第六條第一項、第二項或第七條第一項規定之菸品者，處新臺幣一萬元以上五萬元以下罰鍰。
@@ -86,12 +79,11 @@
 第三十二條　　違反本法規定，經依第二十三條至前條規定處罰者，得併公告被處分人及其違法情形。
 第三十三條　　本法所定罰則，除第二十五條規定由中央主管機關處罰外，由直轄市、縣（市）主管機關處罰之。
 
-    </pre>
-    </section>
-    <section id="section03">
-        <h2>癌症防治</h2>
-        <pre>
-    降低罹癌風險 建構健康生活型態
+</pre>    
+</section>
+    <section id="section03"><h2>癌症防治</h2>
+<pre>
+降低罹癌風險 建構健康生活型態
 癌症防治   三管齊下  Part 1 降低罹癌風險建構健康生活型態 
 
 撰文：徐文媛　諮詢對象：衛生署國民健康局副局長趙坤郁 
@@ -107,12 +99,12 @@
 
 資料來源：行政院衛生署衛生報導139期
 上稿日期：2010/1/20
-    </pre>
-    </section>
-    <section id="section04">
-        <h2>慢性病防治</h2>
-        <pre>
-    長期憋尿 泌尿系統問題多 
+
+</pre>    
+</section>
+    <section id="section04"><h2>慢性病防治</h2>
+<pre>
+長期憋尿 泌尿系統問題多 
 資料來源：中央健康保險局雙月刊第98期
 上稿日期：2012/08/10
 文／游小雯
@@ -134,21 +126,16 @@
 3、正常的飲食習慣及充分的休息與睡眠，以增加抵抗力及免疫力。
 4、多注意及控制易引發膀胱炎的疾病：如糖尿病、尿路結石、攝護腺肥大等。
 如果民眾發現自己解尿不舒服時，一定要在第一時間就診，讓醫師採用檢體對症下藥，只要沒有其他的特殊問題併存，同時能接受完整療程的抗生素治療，通常一星期左右即可痊癒。不過服藥的時間及用量絕對要遵照醫師囑咐，如果自行隨意停藥或不按時服用，很可能會造成殘存的細菌出現抗藥性，非但原本的症狀無法痊癒，還可能帶來慢性泌尿道發炎、尿路結石、腎臟功能受損等併發症，千萬要特別注意。
-    </pre>
-    </section>
+</pre>    
+</section>
 </article>
+
 <script>
-    //當滑鼠點到頁籤時，底下都有黑線，再將點的那個頁籤畫白線
-    $(".tag").on('click', function() {
-        $('.tag').removeClass('active') //先移除全部的白線
-        $(this).addClass('active') //再加上click時，畫白線
-        let id = $(this).attr('id');
-        let newId = id.replace("sec", "section")
-        $("section").hide()
-        $("#" + newId).show()
-
-
-
-
-    })
+   $(".tag").on('click',function(){
+        $(".tag").removeClass('active')
+        $(this).addClass('active')
+        let id=$(this).attr('id').replace("sec",'section');
+        $("section").hide();
+        $("#"+id).show();
+   })
 </script>
