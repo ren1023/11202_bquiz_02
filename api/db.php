@@ -65,11 +65,16 @@ class DB
             }
             $sql .= join(",", $tmp);
             $sql .= " where `id`='{$array['id']}'";
+            echo $sql;
         } else {
             $sql = "insert into `$this->table` ";
             $cols = "(`" . join("`,`", array_keys($array)) . "`)";
             $vals = "('" . join("','", $array) . "')";
             $sql = $sql . $cols . " values " . $vals;
+
+            //執行結果：insert into `total` (`total`,`date`) values ('1','2023-12-30')
+            echo $sql;
+
         }
         return $this->pdo->exec($sql);
     }
@@ -133,15 +138,22 @@ function to($url)
 $Total = new DB('total');
 $User = new DB('user');
 
+//*****測試資料區_start/
+// $find=$User->find(['id'=>1]);
+// dd($find);
 
-
+// $total= $Total-> find(['date'=> date('Y-m-d')]); 
+//         dd($total);
+// $total=$Total->save(['total'=>1,'date'=>date('Y-m-d')]);
+// dd($total);
+//*****測試資料區_end/
 
 // 記錄每日進站人數
-if(!isset($_SESSION['visited'])) {//設定有進站的狀態，當visited不存在時
-    if($Total->count(['date'=> date('Y-m-d')])>0){
-        $total= $Total-> find(['date'=> date('Y-m-d')]);
-        $total['total']++;
-        $Total->save($total);
+if(!isset($_SESSION['visited'])) {//設定有進站的狀態，當visited不存在時(在C:\xampp\tmp下有sess_XXX檔案，記錄session資料中有visited這個欄位來記錄訪問資訊)
+    if($Total->count(['date'=> date('Y-m-d')])>0){ //日期欄位是今天，統計大於0時，
+        $total= $Total-> find(['date'=> date('Y-m-d')]); //撈取日期是今天的這一筆資料，欄位包含了id,total,date三個欄位
+        $total['total']++;//$total這筆資料的'total'欄位，+1
+        $Total->save($total);//再將這筆資料存入資料庫       
     }else{
         $Total->save(['total'=>1,'date'=>date('Y-m-d')]);
     }
