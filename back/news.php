@@ -1,3 +1,4 @@
+    <!-- - 後台_文章管理頁面 -->
     <form method="post" action="./api/edit_news.php"> <!-- ?表示是當前的頁面 -->
         <table style="width:75%; text-align: center;">
             <tbody>
@@ -10,8 +11,8 @@
                 <!-- 將資料顯示在畫面上 -->
                 <?php
                 $total = $News->count(); //從db撈出總筆數
-                $div = 3; //每5筆，換一頁
-                $pages = ceil($total / $div);   //共需多少頁
+                $div = 3; //每3筆，換一頁
+                $pages = ceil($total / $div);   //共需多少頁 8/3=2.6，故pages=3
                 $now = $_GET['p'] ?? 1; //如果值不存在，則預設為第1頁
                 $start = ($now - 1) * $div;  //計算開始值
                 $rows = $News->all(" limit $start,$div");  //limit前建議有空白，第一頁：從第0筆開始，印0,1,2,3,4共5筆資料筆資料；第2頁時，從第5筆開始，印5,6,7,8,9共5筆資料
@@ -19,7 +20,7 @@
                 ?>
                     <tr>
                         <td>
-                            <?= $idx + 1 + $start; ?>
+                            <?= $idx + 1 + $start; ?> <!-- 以前用的是id，但因為id不會連續，故改用idex -->
                         </td>
                         <td>
                             <?= $row['title']; ?>
@@ -29,6 +30,7 @@
                         </td>
                         <td>
                             <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                            <input type="hidden" name="id[]" value="<?=$row['id']?>">
                         </td>
                     </tr>
                 <?php
