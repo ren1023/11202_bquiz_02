@@ -1,4 +1,6 @@
+<!-- 這頁的功能：確認使用者的帳號是否存在 -->
 <?php include_once "db.php";
+
 
 // $_POST['acc'];//從reg.php送來的
 

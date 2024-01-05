@@ -1,4 +1,6 @@
+<!-- 將使用者的註冊資料，存入資料庫 -->
 <?php include_once "db.php";
+
 // $_POST['acc'];
 unset($_POST['pw2']);
 $User->save($_POST);//儲存整個資料，不包含pw2這個值
