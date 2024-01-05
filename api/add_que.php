@@ -4,7 +4,7 @@
 // 判斷是否有主題
 if(isset($_POST['subject'])){
     $Que->save(['text'=> $_POST['subject'],'subject_id'=>0,'vote'=>0]);
-    $subject_id=$Que->find(['text'=> $_POST['subject']])['id'];
+    $subject_id=$Que->find(['text'=> $_POST['subject']])['id']; //撈出從post來的問題主題內容
 }
 
 // 判斷是否有選項
