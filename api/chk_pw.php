@@ -1,8 +1,8 @@
 <?php include_once "db.php";
 
-$res=$User->count($_POST);
+$res=$User->count($_POST);//撈出前端收到使用者輸入的帳號和密碼
 
-if($res){
+if($res){//如果有收到，則將前端的帳號資料存到session中
     $_SESSION['user']=$_POST['acc'];
 }
 echo $res;

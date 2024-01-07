@@ -7,6 +7,7 @@
         border-radius: 5px 5px 0 0;
         text-align: center;
         background-color: #ccc;
+        cursor: pointer;
     }
     .tags{
         display: flex;
@@ -131,11 +132,11 @@
 </article>
 
 <script>
-   $(".tag").on('click',function(){
-        $(".tag").removeClass('active')
-        $(this).addClass('active')
-        let id=$(this).attr('id').replace("sec",'section');
-        $("section").hide();
-        $("#"+id).show();
+   $(".tag").on('click',function(){ //當滑鼠點2下時
+        $(".tag").removeClass('active') //class=.tag，先移除 class=active這個值
+        $(this).addClass('active') //將這個元件加上class=active
+        let id=$(this).attr('id').replace("sec",'section'); //將id這個屬性的值從 sec換成section
+        $("section").hide(); //將section隱藏
+        $("#"+id).show(); //將變數id=> section01~04顯示
    })
 </script>

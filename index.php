@@ -18,9 +18,9 @@
 	</div>
 	<div id="all">
 		<div id="title">
-			<?= date("m月d日 l"); ?> | 
-			今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 
-			累積瀏覽: <?=$Total->sum('total');?>
+			<?= date("m月d日 l"); ?> | <!-- //顯示今天的日期及英文的星期 -->
+			今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | <!-- //查詢今天日期，total欄位的值 --> 
+			累積瀏覽: <?=$Total->sum('total');?> <!-- //將sum這個欄位的值加總 -->
 			<a href="index.php" style='float:right'>回首頁</a>
 		</div>
 		<div id="title2" title='健康促進網-回首頁'>
@@ -40,18 +40,18 @@
 
 					<span style="width:16%; display:inline-block;">
 					<?php 
-					if(!isset($_SESSION['user'])){
+					if(!isset($_SESSION['user'])){ //如果沒有session，就顯示會員登入這個連結
 					?>
 						<a href="?do=login">會員登入</a>
 					<?php 
 					}else{
 					?>		
-						歡迎,<?=$_SESSION['user'];?> 
+						歡迎,<?=$_SESSION['user'];?> <!-- //如果有session['user']的資料，就顯示歡迎xxx -->
 						<button onclick="location.href='./api/logout.php'">登出</button>
 					<?php 
-						if($_SESSION['user']=='admin'){
+						if($_SESSION['user']=='admin'){//如果是admin這個帳號登入
 							?>
-							<button onclick="location.href='back.php'">管理</button>
+							<button onclick="location.href='back.php'">管理</button> <!-- //就連結到back.php這個管理頁 -->
 							<?php	
 							}
 					}
