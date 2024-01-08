@@ -19,27 +19,30 @@
         ?>
             <tr>
                 <td>
-                <div class='title' data-id="<?=$row['id'];?>" ><?= $row['title']; ?></div>
+                    <div class='title' data-id="<?= $row['id']; ?>"><?= $row['title']; ?></div>
                 </td>
                 <td>
                     <div><?= mb_substr($row['news'], 0, 25); ?>...</div>
-                    <div id="p<?=$row['id'];?>" class="pop">
-                        <h3 style="color:lightblue"><?=$row['title'];?></h3>
-                        <pre><?=$row['news'];?></pre>
+                    <div id="p<?= $row['id']; ?>" class="pop">
+                        <h3 style="color:lightblue"><?= $row['title']; ?></h3>
+                        <pre><?= $row['news']; ?></pre>
                     </div>
                 </td>
                 <td>
-                <?php
-                if(isset($_SESSION['user'])){
-                    if($Log->count(['news'=>$row['id'],'acc'=>$_SESSION['user']]) >0){
-                        echo "<a href= ''>收回讚 </a>";
-                    }else{
-
-                        echo "<a href= ''>讚 </a>";
+                    <span id="g<?= $row['id']; ?>"><?= $row['good']; ?></span>個人說<img src="./icon/02B03.jpg" style="width:25px">
+                    <!-- <span id="g<?= $row['id']; ?>"><?= $row['good']; ?></span>個人說 -->
+                    <!-- <img src="./icon/02B03.jpg" style="width:25px"> -->
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                        if ($Log->count(['news' => $row['id'], 'acc' => $_SESSION['user']]) > 0) {
+                            // echo "<a href=''>收回讚</a>";
+                            echo "<a href='Javascript:good({$row['id']})'>收回讚</a>";
+                        } else {
+                            // echo "<a href=''>讚</a>";
+                            echo "<a href='Javascript:good({$row['id']})'>讚</a>";
+                        }
                     }
-                }
-
-                ?>     
+                    ?>
                 </td>
             </tr>
         <?php
@@ -69,11 +72,16 @@
 </fieldset>
 <script>
     $(".title").hover( //當滑鼠滑過標題時
-        function(){
-            $(".pop").hide();//文章內容先是隱藏
-            let id=$(this).data('id');//取得data-id的id=1~n
-            $("#p"+id).show();//#p1~n會顯示
+        function() {
+            $(".pop").hide(); //文章內容先是隱藏
+            let id = $(this).data('id'); //取得data-id的id=1~n
+            $("#p" + id).show(); //#p1~n會顯示
         }
     )
 
+    // function good(news) {
+    //     $.post("./api/good.php", {news}, () => {
+    //         location.reload();
+    //     })
+    // }
 </script>
