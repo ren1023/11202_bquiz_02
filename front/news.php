@@ -6,10 +6,43 @@
             <th width="50%">內容</td>
             <th width=""></td>
         </tr>
+        <?php
+            $total = $News->count(['sh' => 1]);
+            $div = 5;
+            $pages = ceil($total / $div);
+            $now = $_GET['p'] ?? 1;//現在所在的頁數，沒有的話就從第一頁開始
+            $start = ($now - 1) * $div; //開始值
+            $rows=$News-> all(['sh'=> 1]," limit $start,$div");//從哪頁開始，要印出5筆資料
+            foreach($rows as $row){
+            ?>
         <tr>
-            <td></td>
-            <td></td>
+            <td><?= $row['title'];?></td>
+            <td><?=mb_substr($row['news'],0,25);?>...</td>
             <td></td>
         </tr>
+        <?php
+            }
+        ?>
     </table>
+    <div class="ct" >
+		<?php
+
+		if ($now > 1) {
+			$prev = $now - 1;
+			echo " <a href='?do=$do&p=$prev'> < </a> ";
+		}
+
+		for ($i = 1; $i <= $pages; $i++) {
+			$fontsize = ($now == $i) ? '24px' : '16px';//i等於當前頁時，改變字型24px
+			echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i <a/>";
+		}
+
+		if ($now < $pages) {
+			$next = $now + 1;
+			echo " <a href='?do=$do&p=$next'> > </a> ";
+		}
+
+		?>
+
+	</div>
 </fieldset>
