@@ -22,7 +22,19 @@
                 <div id="a<?=$row['id'];?>" style="display:none"><?=$row['news'];?></div><!-- //將文章全部的內容先隱藏 -->
 
             </td> 
-            <td></td>
+            <td>
+                <span id=<?=$row['good'];?>></span><img src="../icon/02B03.jpg" style="width:25px"><!-- //存按讚的資料 -->
+                <?php
+                if(isset($_SESSION['user'])){//先記錄登入的使用者
+                    if($Log->count(['news'=>$row['id'],'acc'=>$_SESSION['user']]) >0){ //去資料庫撈文章id和登入帳號統計是否>0，有大於0表示有人按讚
+                        echo "<a href= ''>收回讚 </a>";//所以要顯示 收回讚
+                    }else{
+                        echo "<a href= ''>讚 </a>";//不然就可以按讚
+                    }
+                }
+
+                ?>      
+            </td>
         </tr>
         <?php
             }
