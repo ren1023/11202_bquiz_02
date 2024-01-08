@@ -16,8 +16,12 @@
             foreach($rows as $row){
             ?>
         <tr>
-            <td><?= $row['title'];?></td>
-            <td><?=mb_substr($row['news'],0,25);?>...</td>
+            <td><div class='title' data-id="<?=$row['id'];?>" style="cursor:pointer" ><?= $row['title'];?></div></td>
+            <td>
+                <div id="s<?=$row['id'];?>"><?=mb_substr($row['news'],0,25);?>...</div> <!-- //將文章內容顯示25個中文字 -->
+                <div id="a<?=$row['id'];?>" style="display:none"><?=$row['news'];?></div><!-- //將文章全部的內容先隱藏 -->
+
+            </td> 
             <td></td>
         </tr>
         <?php
@@ -46,3 +50,9 @@
 
 	</div>
 </fieldset>
+<script>
+    $(".title").on('click',(e)=>{ //點選最新文章的標題時，顯示全部的文章內容
+        let id=$(e.target).data('id');   //$(e.target)等於$this
+        $(`#s${id},#a${id}`).toggle();//#s代表短文章，#a代表長文章，兩個一開始短文章顯示，長文章隱藏，點下目標後，兩個互相切換
+    })
+</script>
