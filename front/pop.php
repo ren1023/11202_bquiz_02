@@ -19,7 +19,7 @@
         ?>
             <tr>
                 <td>
-                <div class='title' data-id="<?=$row['id'];?>" style="cursor:pointer"><?= $row['title']; ?></div>
+                <div class='title' data-id="<?=$row['id'];?>" ><?= $row['title']; ?></div>
                 </td>
                 <td>
                     <div><?= mb_substr($row['news'], 0, 25); ?>...</div>
@@ -61,8 +61,6 @@
             $(".pop").hide();//文章內容先是隱藏
             let id=$(this).data('id');//取得data-id的id=1~n
             $("#p"+id).show();//#p1~n會顯示
-
-
         }
     )
 
