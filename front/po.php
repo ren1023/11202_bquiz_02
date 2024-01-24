@@ -34,16 +34,17 @@
 
 <script>
         getList(1);
-    $('.type-item').on('click',function(){
-        $('.type').text($(this).text());
-        let type=$(this).data('id')
-        getList(type);
+    $('.type-item').on('click',function(){//分類網誌onclick時
+        $('.type').text($(this).text());//健康新知這個元件
+        let type=$(this).data('id')//取得class是data-id的值是1~4
+        getList(type);//執行getList這個function
     })
 
     function getList(type){
         $.get('./api/get_list.php',{type},(list)=>{  //get 傳參數叫type, 因為name和值一樣所以寫一個
             $('.list-items').html(list)
-            $(".article,.list-items").toggle();
+            $(".article").hide();
+            $(".list-items").show();
         })
 
     }
@@ -51,7 +52,8 @@
     function getNews(id){
         $.get('./api/get_news.php',{id},(news)=>{  //get 傳參數叫type, 因為name和值一樣所以寫一個
             $('.article').html(news)
-            $(".article,.list-items").toggle();
+            $(".article,.list-items").show();
+            $(".list-items").hide();
         })
     }
 
