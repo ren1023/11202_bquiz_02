@@ -16,23 +16,21 @@ class DB
     }
 
     /**     ********** 撰寫內部共用方法_Start_共3個 **********     */
-    
+
     protected function a2s($array)
     {
         foreach ($array as $col => $value) {
             $tmp[] = "`$col`='$value'";
         }
-        return $tmp;
+        return $tmp;    /**$array = [    `name` => 'John',    `age` => 30,    `city` => 'New York'    ]; */
     }
-    /**$array = [    `name` => 'John',    `age` => 30,    `city` => 'New York'    ]; */
+
 
     private function sql_all($sql, $array, $other)
     {
 
         if (isset($this->table) && !empty($this->table)) {
-
             if (is_array($array)) {
-
                 if (!empty($array)) {
                     $tmp = $this->a2s($array);
                     $sql .= " where " . join(" && ", $tmp);
@@ -48,7 +46,7 @@ class DB
         }
     }
 
-    private function math($math, $col, $array = '', $other = '')
+    protected function math($math, $col, $array = '', $other = '')
     {
         $sql = "select $math(`$col`)  from `$this->table` ";
         $sql = $this->sql_all($sql, $array, $other);
@@ -59,7 +57,7 @@ class DB
 
 
 
-    /************ 撰寫外部共用方法_Start ***********/
+    /************ 撰寫外部共用方法_Start-8個 ***********/
 
     function all($where = '', $other = '')
     {
