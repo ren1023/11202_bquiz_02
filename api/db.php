@@ -8,8 +8,7 @@ class DB
     protected $pdo; //$pdo=> php data object
     protected $table;
 
-    public function __construct($table)
-    {
+    public function __construct($table){
         $this->table = $table;
         //$this->pdo=new PDO($this->dsn,'s1120401','s1120401');
         $this->pdo = new PDO($this->dsn, 'root', '');
@@ -17,8 +16,7 @@ class DB
 
     /**     ********** 撰寫內部共用方法_Start_共3個 **********     */
 
-    protected function a2s($array)
-    {
+    protected function a2s($array){
         foreach ($array as $col => $value) {
             $tmp[] = "`$col`='$value'";
         }
@@ -26,8 +24,7 @@ class DB
     }
 
 
-    private function sql_all($sql, $array, $other)
-    {
+    private function sql_all($sql, $array, $other){
 
         if (isset($this->table) && !empty($this->table)) {
             if (is_array($array)) {
@@ -46,8 +43,7 @@ class DB
         }
     }
 
-    protected function math($math, $col, $array = '', $other = '')
-    {
+    protected function math($math, $col, $array = '', $other = ''){
         $sql = "select $math(`$col`)  from `$this->table` ";
         $sql = $this->sql_all($sql, $array, $other);
         return $this->pdo->query($sql)->fetchColumn();
@@ -65,6 +61,7 @@ class DB
         $sql = $this->sql_all($sql, $where, $other);
         return  $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+    // $News->all(['type'=>$_GET['type'],'sh'=>1]);
 
     function find($id)
     {
@@ -80,6 +77,7 @@ class DB
         $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         return $row;
     }
+    // $news=$News->find($id);
 
     function del($id)
     {
@@ -95,6 +93,7 @@ class DB
 
         return $this->pdo->exec($sql);
     }
+    // $Log->del(['news'=>$_POST['news'],'acc'=>$_SESSION['user']]);
 
     function save($array)
     {
@@ -117,6 +116,8 @@ class DB
 
         return $this->pdo->exec($sql);
     }
+    // $News->save($news);
+    // $Log->save(['news'=>$_POST['news'],'acc'=>$_SESSION['user']]);
 
 
     function sum($col = '', $where = '', $other = '')
