@@ -43,6 +43,7 @@ class DB
         }
     }
 
+
     protected function math($math, $col, $array = '', $other = ''){
         $sql = "select $math(`$col`)  from `$this->table` ";
         $sql = $this->sql_all($sql, $array, $other);
@@ -63,6 +64,7 @@ class DB
     }
     // $News->all(['type'=>$_GET['type'],'sh'=>1]);
 
+
     function find($id)
     {
         $sql = "select * from `$this->table` ";
@@ -78,6 +80,7 @@ class DB
         return $row;
     }
     // $news=$News->find($id);
+
 
     function del($id)
     {
@@ -115,6 +118,24 @@ class DB
         }
 
         return $this->pdo->exec($sql);
+
+        // $array = [
+        //     'id' => 1,
+        //     'name' => 'John Doe',
+        //     'email' => 'john@example.com'
+        // ];
+
+        // UPDATE `users` SET `name`='John Doe',`email`='john@example.com' WHERE `id`='1'
+
+        // $array = [
+        //     'name' => 'Jane Doe',
+        //     'email' => 'jane@example.com'
+        // ];
+
+        // INSERT INTO `users` (`name`,`email`) VALUES ('Jane Doe','jane@example.com')
+
+        
+        
     }
     // $News->save($news);
     // $Log->save(['news'=>$_POST['news'],'acc'=>$_SESSION['user']]);
