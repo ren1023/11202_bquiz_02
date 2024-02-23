@@ -4,7 +4,7 @@ session_start();
 class DB
 {
 
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db15"; //$dsn=data source name
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bq02"; //$dsn=data source name
     protected $pdo; //$pdo=> php data object
     protected $table;
 
@@ -60,6 +60,7 @@ class DB
     {
         $sql = "select * from `$this->table` ";
         $sql = $this->sql_all($sql, $where, $other);
+
         return  $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
     // $News->all(['type'=>$_GET['type'],'sh'=>1]);
@@ -97,6 +98,7 @@ class DB
         return $this->pdo->exec($sql);
     }
     // $Log->del(['news'=>$_POST['news'],'acc'=>$_SESSION['user']]);
+    
 
     function save($array)
     {
@@ -178,6 +180,8 @@ class DB
 
 }
 
+
+
 /** =======class DB end =======*/
 
 
@@ -200,6 +204,13 @@ $News = new DB('news');
 $Que = new DB('que');
 $Log = new DB('log');
 
+// $tt=$Total->q("select * from total");
+// $tt=$Total->q("INSERT INTO `total` (`id`, `total`, `date`) VALUES (NULL, '10', '2024-02-24')");
+// $tt=$Total->q("UPDATE `total` SET `total` = '110' WHERE `total`.`id` = 8");
+// echo print_r($tt);
+dd($tt);
+
+
 if (!isset($_SESSION['visited'])) {
     if ($Total->count(['date' => date('Y-m-d')]) > 0) {
         $total = $Total->find(['date' => date('Y-m-d')]);
@@ -209,4 +220,7 @@ if (!isset($_SESSION['visited'])) {
         $Total->save(['total' => 1, 'date' => date('Y-m-d')]);
     }
     $_SESSION['visited'] = 1;
+
+
+
 }
