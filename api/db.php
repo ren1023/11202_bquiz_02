@@ -4,7 +4,7 @@ session_start();
 
 /** =======class DB __Start=======**/
 class DB{
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bq02"; //$dsn=data source name
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db15"; //$dsn=data source name
     protected $pdo; //$pdo=> php data object
     protected $table;
 
@@ -12,6 +12,13 @@ class DB{
         $this->table = $table;
         $this->pdo = new PDO($this->dsn, 'root', '');
         //$this->pdo=new PDO($this->dsn,'s1120401','s1120401');
+    }
+
+    /**
+     * 撰寫輔助用的全域函式
+     */
+    function q($sql){
+        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**********撰寫內部共用方法_Start_共3個__Start**********/
@@ -62,19 +69,22 @@ class DB{
     }
 
 
+
     function find($id){
-        $sql = "select * from `$this->table` where ";
+        $sql = "select * from `$this->table` ";
         if (is_array($id)) {
             $tmp = $this->a2s($id);
-            $sql .= join(" && ", $tmp);
+            $sql .="  where ". join(" && ", $tmp);
         } else if (is_numeric($id)) {
-            $sql .= " `id`='$id'";
+            $sql .= " where  `id`='$id'";
         }
         // echo 'find=>'.$sql;
+        //將sql句子帶進pdo的query方法中，並以fetch的方式回傳一筆資料結果
         $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         return $row;
     // $news=$News->find($id);
     }
+    
 
 
     function del($id){
@@ -147,12 +157,7 @@ class DB{
 
 
 
-    /**
-     * 撰寫輔助用的全域函式
-     */
-    function q($sql){
-        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    }
+
 
 
 }
@@ -184,9 +189,9 @@ $Log = new DB('log');
 // $tt=$Total->q("INSERT INTO `total` (`id`, `total`, `date`) VALUES (NULL, '10', '2024-02-24')");
 // $tt=$Total->q("UPDATE `total` SET `total` = '110' WHERE `total`.`id` = 8");
 // $tt=$Total->find(2);
-$tt=$Total->find(['id'=>'1']);
+$tt=$Total->find(['date' => date("Y-m-d")])['total'];
 // echo print_r($tt);
-dd($tt);
+// dd($tt);
 
 
 if (!isset($_SESSION['visited'])) {
