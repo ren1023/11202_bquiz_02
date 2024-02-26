@@ -1,4 +1,8 @@
 <style>
+    .tags{
+        display: flex;
+        margin-left:1px;
+    }
     .tag{
         width:100px;
         padding:5px 10px;
@@ -9,10 +13,7 @@
         background-color: #ccc;
         cursor: pointer;
     }
-    .tags{
-        display: flex;
-        margin-left:1px;
-    }
+
 
     article section{
         border:1px solid black;

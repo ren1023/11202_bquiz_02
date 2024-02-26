@@ -4,7 +4,7 @@ session_start();
 
 /** =======class DB __Start=======**/
 class DB{
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db15"; //$dsn=data source name
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bq02"; //$dsn=data source name
     protected $pdo; //$pdo=> php data object
     protected $table;
 
@@ -189,7 +189,7 @@ $Log = new DB('log');
 // $tt=$Total->q("INSERT INTO `total` (`id`, `total`, `date`) VALUES (NULL, '10', '2024-02-24')");
 // $tt=$Total->q("UPDATE `total` SET `total` = '110' WHERE `total`.`id` = 8");
 // $tt=$Total->find(2);
-$tt=$Total->find(['date' => date("Y-m-d")])['total'];
+// $tt=$Total->find(['date' => date("Y-m-d")])['total'];
 // echo print_r($tt);
 // dd($tt);
 
