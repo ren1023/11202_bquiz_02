@@ -23,13 +23,8 @@
 
 <fieldset class='news-list'>
     <legend >文章列表</legend>
-    <div class="list-items" style="display: none;">
-
-    </div>
-    <div class="article" >
-
-    </div>
-
+    <div class="list-items" style="display: none;"><!-- 放置列表區 --></div>
+    <div class="article" ><!-- 放置文章內容區 --></div>
 </fieldset>
 
 <script>
@@ -37,14 +32,14 @@
     $('.type-item').on('click',function(){//分類網誌onclick時
         $('.type').text($(this).text());//健康新知這個元件
         let type=$(this).data('id')//取得class是data-id的值是1~4
-        getList(type);//執行getList這個function
+        getList(type);//執行getList這個function，傳入“type“去撈，回傳title欄位資料。
     })
 
     function getList(type){
         $.get('./api/get_list.php',{type},(list)=>{  //get 傳參數叫type, 因為name和值一樣所以寫一個
-            $('.list-items').html(list)
-            $(".article").hide();
+            $('.list-items').html(list) //將news的資料放進.list-items裡
             $(".list-items").show();
+            $(".article").hide();
         })
 
     }
@@ -52,7 +47,7 @@
     function getNews(id){
         $.get('./api/get_news.php',{id},(news)=>{  //get 傳參數叫type, 因為name和值一樣所以寫一個
             $('.article').html(news)
-            $(".article,.list-items").show();
+            $(".article").show();
             $(".list-items").hide();
         })
     }
