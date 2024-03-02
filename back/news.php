@@ -41,7 +41,7 @@
         <div class="ct">
             <?php
 
-            if ($now > 1) {  //當 當前頁大於1時，則往下執行
+            if ($now-1 > 0) {  //當 當前頁大於1時，則往下執行
                 $prev = $now - 1;  //上一頁=當前頁-1
                 echo " <a href='?do=$do&p=$prev'><</a> "; //連結到 當前頁的do=news?p=1...2...3...
             }
@@ -53,7 +53,7 @@
             }
 
 
-            if ($now < $pages) {
+            if ($now+1 < $pages) {
                 $next = $now + 1;  //下一頁
                 echo " <a href='?do=$do&p=$next'> > </a> ";
             }
