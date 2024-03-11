@@ -71,8 +71,8 @@
     </div>
 </fieldset>
 <script>
-    $(".title").hover( //當滑鼠滑過標題時
-        function() {
+    //當滑鼠滑過標題時
+    $(".title").hover(function() {
             $(".pop").hide(); //文章內容先是隱藏
             let id = $(this).data('id'); //取得data-id的id=1~n
             $("#p" + id).show(); //#p1~n會顯示

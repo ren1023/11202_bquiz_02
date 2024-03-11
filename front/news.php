@@ -2,10 +2,10 @@
     <legend>目前位置：首頁> 最新文章區</legend>
     <table style="width:95%;margin:auto">
         <tr>
-            <th width="30%">標題</td>
-            <th width="50%">內容</td>
+            <th width="30%">標題</th>
+            <th width="50%">內容</th>
             <th width="">
-                </td>
+                </th>
         </tr>
         <?php
         $total = $News->count(['sh' => 1]);
@@ -28,14 +28,6 @@
                 <td>
                     <span id=<?= $row['good']; ?>></span><img src="../icon/02B03.jpg" style="width:25px"><!-- //存按讚的資料 -->
                     <?php
-                    // if(isset($_SESSION['user'])){//先記錄登入的使用者
-                    //     if($Log->count(['news'=>$row['id'],'acc'=>$_SESSION['user']]) > 0){ //去資料庫撈文章id和登入帳號統計是否>0，有大於0表示有人按讚
-                    //         echo "<a href='Javascript:good({$row['id']})'>收回讚 </a>";//所以要顯示 收回讚
-                    //     }else{
-                    //         echo "<a href='Javascript:good({$row['id']})'>讚 </a>";//要顯示 讚，記得session['user']因安全考量不要在前端處理
-                    //     }
-                    // }
-                    // <?php
                     if (isset($_SESSION['user'])){
                         if ($Log->count(['news' => $row['id'], 'acc' => $_SESSION['user']]) > 0) {
                             echo "<a href='Javascript:good({$row['id']})'>收回讚</a>";
@@ -74,9 +66,17 @@
     </div>
 </fieldset>
 <script>
-    $(".title").on('click', (e) => { //點選最新文章的標題時，顯示全部的文章內容
-        let id = $(e.target).data('id'); //$(e.target)等於$this
-        $(`#s${id},#a${id}`).toggle(); //#s代表短文章，#a代表長文章，兩個一開始短文章顯示，長文章隱藏，點下目標後，兩個互相切換
+    // $(".title").on('click', (e) => { //點選最新文章的標題時，顯示全部的文章內容
+    //     let id = $(e.target).data('id'); //$(e.target)等於$this
+    //     $(`#s${id},#a${id}`).toggle(); //#s代表短文章，#a代表長文章，兩個一開始短文章顯示，長文章隱藏，點下目標後，兩個互相切換
+    // })
+
+    //寫法二：不使用箭頭函數的寫法：
+    $(".title").on('click',function(e){
+        let id=$(this).data('id');
+        $(`#s${id},#a${id}`).toggle();
+        // $('#s'+id+',#a'+id).toggle();//另一種寫法
+
     })
 
     // function good(news) {
